@@ -1,0 +1,13 @@
+------------------------------------------单注册中心---------------------------------------------
+直接启动，默认读的是single配置文件，只有一个注册中心。
+提供者消费者配置地址:
+eureka.client.serviceUrl.defaultZone=http://ip:port/eureka
+------------------------------------------多注册中心---------------------------------------------
+通过参数启动集群
+java -jar spring-boot-eureka-server-1.0.0.jar --spring.profiles.active=cluster_s1
+java -jar spring-boot-eureka-server-1.0.0.jar --spring.profiles.active=cluster_s2
+提供者消费者配置地址:
+eureka.client.serviceUrl.defaultZone=http://ip1:port1/eureka,http://ip2:port2/eureka
+
+
+启动后，都可以通过http://localhost:20001访问

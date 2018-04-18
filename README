@@ -1,0 +1,19 @@
+项目顺序
+spring-boot-eureka-server
+spring-boot-eureka-provider
+spring-boot-ribbon-consumer
+spring-boot-turbine(集群监控)
+spring-boot-hystrix-dashboard(监控面板)
+spring-boot-feign-consumer
+spring-boot-api
+
+spring-boot-api-gateway
+
+项目的服务名不区分大小写
+
+服务跟踪：
+添加spring-cloud-starter-sleuth依赖，则可以在日志中显示各个服务模块的调用链。
+INFO [api-gateway,bb8b6501b8d8a70b,bb8b6501b8d8a70b,false]
+      当前服务名    TraceID          SpanID           是否将信息输出到Zipkin中
+TraceID：一条调用链唯一。SpanID：基本的工作单元。
+

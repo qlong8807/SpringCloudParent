@@ -1,0 +1,32 @@
+feign是ribbon和hystrix的封装，对二者进行了简化。
+HelloService和User两个类在provider和consumer中都存在。
+PersonService和Person两个类被提取到了spring-boot-api工程中。
+
+访问http://localhost:20006/person，可以查看断路器的效果。
+
+feign的负载均衡是通过ribbon实现的
+对ribbon进行配置：
+全局配置
+    ribbon.ConnectTimeout=500
+    ribbon.ReadTimeout=5000
+指定服务配置
+    #请求连接的超时时间
+    <服务名>.ribon.ConnectTimeout=250
+    #请求处理的超时时间
+    eureka-provider.ribon.ReadTimeout=1000
+    #对所有操作请求都进行重试
+    eureka-provider.ribon.OkToRetryOnAllOperations=true
+    #切换实例的重试次数
+    eureka-provider.ribon.MaxAutoRetriesNextServer=2
+    #对当前实例的重试次数
+    eureka-provider.ribon.MaxAutoRetries=1
+Hystrix配置：
+全局配置
+    #关闭feign客户端的hystrix功能的支持,默认为true开启。
+    feign.hystrix.enabled=false
+    #断路器的超时时间。需要大于Ribbon的超时时间，不然不会触发重试。
+    hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds=10000
+    #关闭熔断功能,默认为true开启。
+    hystrix.command.default.execution.timeout.enabled=false
+
+

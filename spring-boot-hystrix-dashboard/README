@@ -1,0 +1,9 @@
+查看首页 http://localhost:20003/hystrix
+支持三种监控方式：
+默认集群监控：Cluster via Turbine (default cluster): http://turbine-hostname:port/turbine.stream
+指定集群监控：Cluster via Turbine (custom cluster): http://turbine-hostname:port/turbine.stream?cluster=[clusterName]
+单体应用监控：Single Hystrix App: http://hystrix-app:port/hystrix.stream
+（被监控的项目需要引用依赖spring-cloud-starter-hystrix和spring-boot-starter-actuator）
+
+单应用监控：输入http://localhost:9091/hystrix.stream可以监控spring-boot-ribbon-consumer服务。
+集群监控：输入http://localhost:20004/turbine.stream可以监控单服务的多个实例。

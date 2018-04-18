@@ -1,0 +1,14 @@
+网关的优点
+1.作为系统的统一入口，屏蔽了系统内部各个微服务的细节；
+2.可以与服务治理框架结合，实现自动化服务实例维护以及负载均衡的路由转发；
+3.可以实现接口权限校验与微服务业务逻辑的解耦；
+4.通过服务网关中的过滤器，在各生命周期中去校验请求的内容，将原本在对外服务层做的校验前移，保证了微服务的无状态性，同时降低了微服务的测试难度，让服务本身更集中关注业务逻辑的处理。
+
+直接代理访问eureka-provider
+http://localhost:20007/api-hello/person?accessToken=a
+
+通过注册访问访问eureka-provider
+http://localhost:20007/api-a/hello?accessToken=a
+访问feign-consumer
+http://localhost:20007/api-b/hello?accessToken=a
+http://localhost:20007/api-b/person?accessToken=a

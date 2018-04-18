@@ -1,0 +1,17 @@
+对客户端进行配置：
+在需要收集日志的服务中加入以下依赖
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-sleuth</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-sleuth-zipkin</artifactId>
+</dependency>
+并在application.properties中添加：
+spring.zipkin.base-url=http://localhost:20012
+
+查看服务中的跟踪信息是否为true
+2018-04-17 16:02:32.675  INFO [feign-consumer,ea84c30f8232c7f0,ea84c30f8232c7f0,true]
+
+打开浏览器访问http://localhost:20012查看信息。

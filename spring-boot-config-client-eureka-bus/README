@@ -1,0 +1,6 @@
+发送post请求刷新从git仓库获得的缓存
+1.management.security.enabled=false 关闭actuator的安全校验，否则不能在命令行进行刷新。
+2.curl -X POST http://localhost:20010/bus/refresh -d 'destination=**'
+
+启动多个该项目实例，当git的配置文件发生变化的时候，可以通过webhooks或者上述命令，随便刷新一个该项目实例（/bus/refresh），即可刷新所有实例（bus实现）。
+但是这样需要在每个服务上分别调用/bus/refresh。因此可以把bus集成到config-server,这样可以实现一站式解决。

@@ -1,0 +1,8 @@
+先在git仓库创建config-repo目录，然后创建demo目录，再分别创建abc.properties,abc-dev.properties,abc-test.properties文件。
+在浏览器中访问abc-dev.properties
+http://localhost:20008/abc/dev/master
+http://localhost:20008/abc/dev
+访问abc.properties
+http://localhost:20008/abc/master
+
+config-server会把git的内容clone一份存到本地，以防突然无网。
