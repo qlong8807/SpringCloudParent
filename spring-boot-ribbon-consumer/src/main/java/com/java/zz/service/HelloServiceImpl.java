@@ -24,12 +24,16 @@ public class HelloServiceImpl implements HelloService {
 	 * execution.isolation.thread.timeoutInMilliseconds,方法执行的超时时间，单位为毫秒。
 	 * execution.timeout.enabled,是否启用超时，默认true
 	 * execution.isolation.thread.interruptOnTimeout,超时是否中断，默认true
-	 * 
+	 * 线程池保证不会出现高并发导致无限制占用资源的情况。
 	 */
 	@Override
 	@HystrixCommand(fallbackMethod = "helloFallback",commandProperties= {
 			@HystrixProperty(name="execution.timeout.enabled",value="true"),
 			@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value="2000")
+	},threadPoolProperties = {
+			@HystrixProperty(name="coreSize",value="20"),
+			@HystrixProperty(name="maximumSize",value="50"),
+			@HystrixProperty(name="allowMaximumSizeToDivergeFromCoreSize",value="true")
 	})
 	public String getHello(String name) {
 		long start = System.currentTimeMillis();
