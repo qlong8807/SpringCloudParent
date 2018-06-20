@@ -11,6 +11,7 @@ spring-boot-api-gateway
 
 项目的服务名不区分大小写
 
+spring-boot-zipkin-server
 服务跟踪：
 添加spring-cloud-starter-sleuth依赖，则可以在日志中显示各个服务模块的调用链。
 INFO [api-gateway,bb8b6501b8d8a70b,bb8b6501b8d8a70b,false]
